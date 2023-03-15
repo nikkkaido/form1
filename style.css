@@ -84,9 +84,34 @@ h1{
     color: #FFFFFF;
 }
 
-.btn-pers{
-    font-family: 'stolzlbold';
+
+/***** BOTONES *****/
+
+.bttn1 {
+	background-color:#EF426F;
+	border-radius:12px;
+	border:1px solid #EF426F;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'stolzlregular';
+	font-size:14px;
+	font-weight:bold;
+	padding:10px 16px;
+	text-decoration:none;
+}
+.bttn1:hover {
+	background-color:#A53256;
+    border:1px solid #A53256;
+    color: #BDBEBF;
+}
+.bttn1:active {
+	position:relative;
+	top:1px;
+}
+
+.bt1 {
+    color: #fff;
     background-color: #EF426F;
-    border-color: #ff4c6a;
-    color: #FFFFFF;
+    border-color: #EF426F;
 }
