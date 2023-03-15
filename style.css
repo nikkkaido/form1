@@ -1,0 +1,92 @@
+/***** FONTS *****/
+
+@font-face {
+    font-family: 'stolzlregular';
+    src: url('fonts/Stolzl-Regular.woff2') format('woff2'),
+         url('fonts/Stolzl-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'stolzlmedium';
+    src: url('fonts/Stolzl-Medium.woff2') format('woff2'),
+         url('fonts/Stolzl-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'stolzllight';
+    src: url('fonts/Stolzl-Light.woff2') format('woff2'),
+         url('fonts/Stolzl-Light.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'stolzlbold';
+    src: url('fonts/Stolzl-Bold.woff') format('woff2'),
+         url('fonts/Stolzl-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'stolzlthin';
+    src: url('fonts/Stolzl-Thin.woff2') format('woff2'),
+         url('fonts/Stolzl-Thin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'stolzlbook';
+    src: url('fonts/Stolzl-Book.woff2') format('woff2'),
+         url('fonts/Stolzl-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/***** FORMATO CONTAINERS *****/
+
+.conticon{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.conth1{
+    margin-bottom: 10px;
+}
+
+.contform{
+    
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+h1{
+    font-family: 'stolzlmedium';
+    color: #FFFFFF;
+}
+
+.textolabel{
+    font-family: 'stolzllight';
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.btn-pers{
+    font-family: 'stolzlbold';
+    background-color: #EF426F;
+    border-color: #ff4c6a;
+    color: #FFFFFF;
+}
