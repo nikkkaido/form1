@@ -31,17 +31,18 @@
                 <form>
                     <div class="mb-3">
                         <label for="codigo" class="form-label textolabel">CODIGO A VALIDAR</label>
+
                         <input type="text" class="form-control" id="codigo" name="codigo">
                         <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
                     </div>
                     <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
-                    <input class="bttn1" type="submit" data-bs-toggle="modal" data-bs-target="#resultadoModal" value="VALIDAR">
+
+                    <p id="resultado"></p>
+                    <input class="bttn1" type="submit"  value="VALIDAR">
                 </form>
             </div>
 
-            
-
-            <div class="modal" id="resultadoModal" tabindex="-1">
+         <!--   <div class="modal" id="resultadoModal" tabindex="-1">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -56,7 +57,7 @@
                     </div>
                   </div>
                 </div>
-            </div>
+            </div>-->
 
         </div>
             
@@ -70,12 +71,12 @@
 const form = document.querySelector('form');
 const input = document.querySelector('#codigo');
 const resultado = document.querySelector('#resultado');
-const status = document.querySelector('#estado');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const dato = input.value;
+  dato.toUpperCase();
 
   const requestOptions = {
     method: 'POST',
@@ -86,14 +87,16 @@ form.addEventListener('submit', (event) => {
   fetch('https://cpo.cuy.cl/cst.php', requestOptions)
     .then(response => response.json())
     .then(data => {
-      if (data.status == 'true') {
-        if (data.used == 'true') {
-          resultado.innerHTML = `<p>El código ${dato} es válido pero ya fue utilizado</p>`;
+        console.log(data.status);
+        console.log(data.used);
+      if (data.status == true) {
+        if (data.used == true) {
+          resultado.innerHTML = `<p>El código '${dato}' es válido y ya fue utilizado.</p>`;
         } else {
-          resultado.innerHTML = `<p>El código ${dato} es válido y no ha sido utilizado</p>`;
+          resultado.innerHTML = `<p>El código '${dato}' es válido y no ha sido utilizado.</p>`;
         }
       } else {
-        resultado.innerHTML = `<p>El código ${dato} no es válido</p>`;
+        resultado.innerHTML = `<p>El código '${dato}' no es válido.</p>`;
       }
     })
     .catch(error => console.error(error));
