@@ -30,14 +30,16 @@
             <div class="contform" style="background-color: #21242A;">
                 <form>
                     <div class="mb-3">
-                        <label class="form-label textolabel">CODIGO A VALIDAR</label>
-                        <input type="text" class="form-control" id="code">
+                        <label for="codigo" class="form-label textolabel">CODIGO A VALIDAR</label>
+                        <input type="text" class="form-control" id="codigo" name="codigo">
                         <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
                     </div>
                     <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
                     <input class="bttn1" type="submit" value="VALIDAR" onclick="validarDatos()">
                 </form>
             </div>
+
+            <div class="form-text" id="resultado"></div>
         </div>
             
     </div>
@@ -47,6 +49,43 @@
 
 <script>
 
+const form = document.querySelector('form');
+const input = document.querySelector('#codigo');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const dato = input.value;
+
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ code: dato })
+  };
+
+  fetch('https://cpo.cuy.cl', requestOptions)
+    .then(response => response.json())
+    .then(data => {
+      if (data.status == 'true') {
+        resultado.innerHTML = `<p>El dato ${dato} existe</p>`;
+      } else {
+        resultado.innerHTML = `<p>El dato ${dato} no existe</p>`;
+      }
+    })
+    .catch(error => console.error(error));
+});
+
+   /* fetch('https://cpo.cuy.cl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ code: "PRUEBA"})
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
+
 function validarDatos(){
     
     var codigo = document.getElementById("code").value;
@@ -54,21 +93,17 @@ function validarDatos(){
 
     console.log(codigo);
 
-    fetch('https://cpo.cuy.cl/cst.php', {
+    fetch('https://cpo.cuy.cl', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          code: codigo
-        })
+        body: JSON.stringify({ code: "PRUEBA"})
       })
       .then(response => response.json())
-      .then(data => {
-        console.log(data.status);
-        console.log(data.used);
-      })
+      .then(data => console.log(data))
       .catch(error => console.error(error));
-}
+}*/
+
 
 </script>
