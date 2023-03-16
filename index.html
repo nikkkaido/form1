@@ -50,8 +50,9 @@
 function validarDatos(){
     
     var codigo = document.getElementById("code").value;
+    codigo.toUpperCase();
 
-    fetch('/ruta-de-tu-api', {
+    fetch('https://cpo.cuy.cl/cst.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
