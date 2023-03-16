@@ -83,14 +83,13 @@ h5{
 }
 
 p{
-    font-family: 'stolzlbook';
+    font-family: 'stolzlbold';
     size: 13px;
-    color: white;
 }
 
 .textolabel{
-    font-family: 'stolzlbook';
-    font-size: 15px;
+    font-family: 'stolzlbold';
+    font-size: 16px;
     color: #FFFFFF;
 }
 

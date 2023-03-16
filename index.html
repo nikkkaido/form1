@@ -30,15 +30,18 @@
             <div class="contform" style="background-color: #21242A;">
                 <form>
                     <div class="mb-3">
-                        <label for="codigo" class="form-label textolabel">CODIGO A VALIDAR</label>
+                        <label for="codigo" class="form-label textolabel">CÓDIGO A VALIDAR</label>
 
                         <input type="text" class="form-control" id="codigo" name="codigo">
-                        <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
+                        <div id="emailHelp" class="form-text">El código debe ser de tantos caracteres, letras o números quién sabe.</div>
                     </div>
                     <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
-
+                    
                     <p id="resultado"></p>
-                    <input class="bttn1" type="submit"  value="VALIDAR">
+                    <div class="text-center">
+                        <input class="bttn1" type="submit"  value="VALIDAR">
+                    </div>
+                    
                 </form>
             </div>
 
@@ -91,12 +94,12 @@ form.addEventListener('submit', (event) => {
         console.log(data.used);
       if (data.status == true) {
         if (data.used == true) {
-          resultado.innerHTML = `<p>El código '${dato}' es válido y ya fue utilizado.</p>`;
+          resultado.innerHTML = `<p style="color: yellow;">El código '${dato}' es válido y ya fue utilizado.</p>`;
         } else {
-          resultado.innerHTML = `<p>El código '${dato}' es válido y no ha sido utilizado.</p>`;
+          resultado.innerHTML = `<p style="color: green;">El código '${dato}' es válido y no ha sido utilizado.</p>`;
         }
       } else {
-        resultado.innerHTML = `<p>El código '${dato}' no es válido.</p>`;
+        resultado.innerHTML = `<p style="color: red;">El código '${dato}' no es válido.</p>`;
       }
     })
     .catch(error => console.error(error));
