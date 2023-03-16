@@ -17,7 +17,7 @@
 
     
 
-    <div class="container-sm">
+    <div class="container-sm" style="max-width: 600px;">
 
         <div class="mx-auto text-center conticon">
             <img src="img/icono_color_app_rounded@2x.png" width="80px">
@@ -31,11 +31,11 @@
                 <form>
                     <div class="mb-3">
                         <label class="form-label textolabel">CODIGO A VALIDAR</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="code" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
                     </div>
-                    
-                    <button class="bttn1" type="submit">VALIDAR</button>
+                    <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
+                    <input class="bttn1" type="submit" value="VALIDAR" onclick="validarDatos()">
                 </form>
             </div>
         </div>
@@ -44,3 +44,28 @@
     
   </body>
 </html>
+
+<script>
+
+function validarDatos(){
+    
+    var codigo = document.getElementById("code").value;
+
+    fetch('/ruta-de-tu-api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          code: codigo
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.status);
+        console.log(data.used);
+      })
+      .catch(error => console.error(error));
+}
+
+</script>
