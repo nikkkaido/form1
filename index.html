@@ -31,7 +31,7 @@
                 <form>
                     <div class="mb-3">
                         <label class="form-label textolabel">CODIGO A VALIDAR</label>
-                        <input type="email" class="form-control" id="code" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="code">
                         <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
                     </div>
                     <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
@@ -50,7 +50,9 @@
 function validarDatos(){
     
     var codigo = document.getElementById("code").value;
-    codigo.toUpperCase();
+    codigo = codigo.toUpperCase();
+
+    console.log(codigo);
 
     fetch('https://cpo.cuy.cl/cst.php', {
         method: 'POST',
