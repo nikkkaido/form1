@@ -78,11 +78,21 @@ h1{
     color: #FFFFFF;
 }
 
+h5{
+    font-family: 'stolzlmedium';
+}
+
+p{
+    font-family: 'stolzlregular';
+    color: #21242A;
+}
+
 .textolabel{
     font-family: 'stolzllight';
     font-size: 15px;
     color: #FFFFFF;
 }
+
 
 
 /***** BOTONES *****/

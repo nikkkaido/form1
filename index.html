@@ -35,11 +35,29 @@
                         <div id="emailHelp" class="form-text">Código debe ser de tantos carácteres letras o números quién sabe.</div>
                     </div>
                     <!-- <button class="bttn1" type="submit">VALIDAR</button> -->
-                    <input class="bttn1" type="submit" value="VALIDAR" onclick="validarDatos()">
+                    <input class="bttn1" type="submit" data-bs-toggle="modal" data-bs-target="#resultadoModal" value="VALIDAR">
                 </form>
             </div>
 
-            <div class="form-text" id="resultado"></div>
+            
+
+            <div class="modal" id="resultadoModal" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Resultado de la solicitud</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="resultado">Esperando respuesta...</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="bttn1" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
         </div>
             
     </div>
@@ -52,6 +70,7 @@
 const form = document.querySelector('form');
 const input = document.querySelector('#codigo');
 const resultado = document.querySelector('#resultado');
+const status = document.querySelector('#estado');
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -64,47 +83,20 @@ form.addEventListener('submit', (event) => {
     body: JSON.stringify({ code: dato })
   };
 
-  fetch('https://cpo.cuy.cl', requestOptions)
+  fetch('https://cpo.cuy.cl/cst.php', requestOptions)
     .then(response => response.json())
     .then(data => {
       if (data.status == 'true') {
-        resultado.innerHTML = `<p>El dato ${dato} existe</p>`;
+        if (data.used == 'true') {
+          resultado.innerHTML = `<p>El código ${dato} es válido pero ya fue utilizado</p>`;
+        } else {
+          resultado.innerHTML = `<p>El código ${dato} es válido y no ha sido utilizado</p>`;
+        }
       } else {
-        resultado.innerHTML = `<p>El dato ${dato} no existe</p>`;
+        resultado.innerHTML = `<p>El código ${dato} no es válido</p>`;
       }
     })
     .catch(error => console.error(error));
 });
-
-   /* fetch('https://cpo.cuy.cl', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ code: "PRUEBA"})
-      })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-
-function validarDatos(){
-    
-    var codigo = document.getElementById("code").value;
-    codigo = codigo.toUpperCase();
-
-    console.log(codigo);
-
-    fetch('https://cpo.cuy.cl', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ code: "PRUEBA"})
-      })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error(error));
-}*/
-
 
 </script>
